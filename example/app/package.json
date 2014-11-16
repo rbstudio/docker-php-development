@@ -1,0 +1,15 @@
+{
+    "name"           : "example-php-app",
+    "version"        : "0.0.1",
+    "scripts": {
+        "install": "napa"
+    },
+    "napa": {
+        "angular": "angular/bower-angular#v1.3.0"
+    },
+    "devDependencies": {
+        "compass": "0.1.0",
+        "gulp": "~3.8.6",
+        "napa": "~0.4.1"
+    }
+}
