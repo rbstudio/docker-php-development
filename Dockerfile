@@ -74,7 +74,7 @@ RUN apt-get install -y -q nodejs=0.10.33-2nodesource1~trusty1
 #FIXME
 #We won't install any packages, just use napa for now
 RUN npm install -g napa --save-dev
-
+RUN npm install -g gulp
 #=====END=====#
 
 #=====Supervisor Installation=====#
@@ -88,8 +88,6 @@ RUN apt-get install -y supervisor=3.0b2-1
 ADD ./config /home/development/config/default
 ADD ./bin /home/development/bin
 RUN chmod 755 /home/development/bin/*
-
-ENV PATH $PATH:/home/development/bin
 #=====END=====#
 
 RUN mkdir -p /home/development/storage/mongo

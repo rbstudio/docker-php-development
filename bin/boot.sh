@@ -12,9 +12,9 @@ WITH_MYSQL=${WITH_MYSQL:-no}
 
 VERBOSE=${VERBOSE:-no}
 SUPPRESS=""
+PATH=$PATH:/usr/local/rvm/gems/ruby-2.1.3/bin:/usr/local/rvm/rubies/ruby-2.1.3/bin
 
 #Utility functions.
-
 logText () {
     #Will add additional info here
     echo "[DEVENV]"$1
@@ -42,14 +42,28 @@ bootDevenv () {
     fi
 }
 
-composerInstall () {
-    echo "Installing composer deps"
-    composer install -o -d $APP_PATH
+#Deps installation
+
+bundleRun() {
+    logText "Executing \"bundle $1\""
+    BUNDLE_GEMFILE=$APP_PATH/Gemfile bundle $1
 }
 
-npmInstall () {
-    echo "Installing NPM deps"
-    cd $APP_PATH && sudo npm install --unsafe-perm
+composerRun() {
+    logText "Executing \"composer $1 -o -d $APP_PATH\""
+    composer $1 -o -d $APP_PATH --prefer-source --no-interaction
+}
+
+npmRun () {
+    logText "Executing \"npm $1 $2 $3\""
+    cd $APP_PATH && npm $1 $2 $3 --unsafe-perm
+}
+
+gulpRun () {
+    logText "Satisfying gulp dependencies..."
+    bundleRun install
+    logText "Executing \"gulp $1 $2 $3\""
+    cd $APP_PATH && gulp $1
 }
 
 # First boot initiation
@@ -101,11 +115,23 @@ case "$1" in
         bootDevenv
         ;;
     devenv:deps-install)
-        composerInstall
-        npmInstall
+        composerRun "install"
+        npmRun "install"
         ;;
     devenv:deps-clean)
         composerClean
         npmClean
+        ;;
+    devenv:gulp)
+        gulpRun "$2" "$3" "$4"
+        ;;
+    devenv:npm)
+        npmRun "$2" "$3" "$4"
+        ;;
+    devenv:composer)
+        composerRun "$2" "$3" "$4"
+        ;;
+    devenv:bundle)
+        bundleRun "$2" "$3" "$4"
         ;;
 esac
