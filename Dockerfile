@@ -101,6 +101,7 @@ RUN mkdir -p /home/development/app
 VOLUME ["/home/development/storage/mongo"]
 VOLUME ["/home/development/storage/psql"]
 VOLUME ["/home/development/storage/mysql"]
+VOLUME ["/home/development/storage/files"]
 
 #Logs volume
 VOLUME ["/home/development/logs"]
@@ -115,4 +116,4 @@ EXPOSE 80
 
 ENTRYPOINT ["/home/development/bin/boot.sh"]
 
-CMD ["devenv:boot"]
+CMD ["devenv:help"]
