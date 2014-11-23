@@ -46,14 +46,25 @@ PHP Development Environment in a docker container
 
 2. Run a php application
 
-`docker run --rm -it -p 80:80 -p 5432:5432 -v <path-to-app>:/home/development/app -v<path-to-psql-storage>:/home/development/storage/psql -v <path-to-logs>:/home/development/logs -v <path-to-nginx-config>:/home/development/config/custom/sites-enabled -e WITH_PSQL=yes -e VERBOSE=yes redbuffstudio/docker-php-development:beta devenv:run`
+```bash
+docker run --rm -it -p 80:80 -p 5432:5432 \
+-v <path-to-app>:/home/development/app \
+-v <path-to-psql-storage>:/home/development/storage/psql \
+-v <path-to-logs>:/home/development/logs \
+-v <path-to-configs>:/home/development/config/custom/sites-enabled \
+-e WITH_PSQL=yes -e VERBOSE=yes
+redbuffstudio/docker-php-development:beta devenv:run
+```
 
 3. Start the gulp watch process (if setup in the Gulpfile.js)
 
-`docker run --rm -it <path-to-app>:/home/development/app redbuffstudio/docker-php-development devenv:tools gulp watch`
+```bash
+docker run --rm -it \
+-v <path-to-app>:/home/development/app \
+redbuffstudio/docker-php-development:beta devenv:tools gulp watch
+```
 
 # License
--------
 
 * Copyright 2014 [Red Buff Studio LTD](http://redbuffstudio.com)
 * Distributed under the MIT License (hereby included)
