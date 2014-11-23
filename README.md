@@ -52,7 +52,7 @@ docker run --rm -it -p 80:80 -p 5432:5432 \
 -v <path-to-psql-storage>:/home/development/storage/psql \
 -v <path-to-logs>:/home/development/logs \
 -v <path-to-configs>:/home/development/config/custom/sites-enabled \
--e WITH_PSQL=yes -e VERBOSE=yes
+-e WITH_PSQL=yes -e VERBOSE=yes \
 redbuffstudio/docker-php-development:beta devenv:run
 ```
 
