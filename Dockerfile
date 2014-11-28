@@ -17,7 +17,7 @@ RUN apt-get -y update
 #=====General utilities=====#
 
 RUN apt-get install -y -q python-software-properties software-properties-common bash-completion wget nano \
-curl libcurl3 libcurl3-dev build-essential
+curl libcurl3 libcurl3-dev build-essential libpcre3-dev
 
 
 # Install VCS
@@ -44,7 +44,7 @@ RUN apt-get install -y postgresql-9.3 postgresql-contrib-9.3
 RUN echo "deb http://ppa.launchpad.net/ondrej/php5-5.6/ubuntu trusty main" >> /etc/apt/sources.list
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key E5267A6C
 RUN apt-get -y update
-RUN apt-get install -y -q php5-cli php5-fpm php5-mysql php5-curl php5-gd php5-intl php5-imagick php5-mcrypt php5-memcache php5-xmlrpc php5-xsl
+RUN apt-get install -y -q php5-cli php5-fpm php5-dev php5-mysql php5-curl php5-gd php5-intl php5-imagick php5-mcrypt php5-memcache php5-xmlrpc php5-xsl
 RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
 
@@ -53,6 +53,17 @@ RUN sed -i 's/\;date\.timezone\ \=/date\.timezone\ \=\ UTC/g' /etc/php5/fpm/php.
 RUN sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php5/fpm/php-fpm.conf
 RUN sed -i -e "s/;listen.mode\s*=\s*0660/listen.mode = 0666/g" /etc/php5/fpm/pool.d/www.conf
 
+#Install phalcon
+RUN git clone git://github.com/phalcon/cphalcon.git /tmp/cphalcon
+RUN cd /tmp/cphalcon/build && git checkout 1.3.4
+RUN cd /tmp/cphalcon/build && ./install
+RUN echo "extension=phalcon.so" > /etc/php5/mods-available/phalcon.ini
+RUN php5enmod phalcon
+
+#Install phalcon devtools
+RUN git clone https://github.com/phalcon/phalcon-devtools.git /usr/local/lib/phalcon-devtools
+RUN ln -s /usr/local/lib/phalcon-devtools/phalcon.php /usr/bin/phalcon
+RUN chmod +x /usr/bin/phalcon
 #=====END=====#
 
 #=====Ruby 2.1.3 Installation (with RVM)=====#

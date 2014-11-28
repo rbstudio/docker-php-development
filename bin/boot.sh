@@ -60,14 +60,16 @@ showHelp () {
     logText " ------ Install composer & npm dependencies."
     logText " ---- clean" $GREEN
     logText " ------ Remove DEFAULT npm/composer folders."
-    logText " -- devenv:tools" $GREEN
+    logText " -- devenv:tools (composer, gulp, npm, phalcon)" $GREEN
     logText " ---- Subcommands (e.g. \"devenv:tools gulp watch\")" $BLUE
     logText " ---- composer" $GREEN
     logText " ------ Execute a composer command."
+    logText " ---- gulp" $GREEN
+    logText " ------ Execute a command from your Gulpfile.js."
     logText " ---- npm" $GREEN
     logText " ------ Execute a npm command."
-    logText " ---- gulp" $GREEN
-    logText " ------ Execute an npm command."
+    logText " ---- phalcon" $GREEN
+    logText " ------ Execute a phalcon command."
 }
 
 # Execute Application
@@ -141,6 +143,11 @@ bundleRun () {
     BUNDLE_GEMFILE=$APP_PATH/Gemfile bundle $1
 }
 
+phalconRun () {
+    logText "Executing \"phalcon $1 $2 $3\"" $GREEN
+    phalcon $1 $2 $3
+}
+
 # CMD devenv:composer <cmd>
 composerRun () {
     logText "Executing \"composer $1 -o -d $APP_PATH\"" $GREEN
@@ -204,6 +211,9 @@ case "$1" in
                 ;;
             npm)
                 npmRun "$3" "$4" "$5"
+                ;;
+            phalcon)
+                phalconRun "$3" "$4" "$5"
                 ;;
         esac
         ;;
