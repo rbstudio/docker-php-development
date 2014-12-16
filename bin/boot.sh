@@ -99,7 +99,7 @@ setupEnvironment () {
     enableWatcher nginx
 
     if [ "$PSQL_HOST" != "no" ]; then
-        logText 'Setting up PostgreSql v9.3'
+        logText 'Setting up PostgreSql v9.4'
         preparePsql
     fi
 }
@@ -113,10 +113,10 @@ preparePsql () {
         chown -R postgres:postgres /home/development/storage/psql
         if [ $VERBOSE == 'no' ]; then
             logText "Initializing new Postgres DB [output suppressed]" $GREEN
-            sudo -u postgres /usr/lib/postgresql/9.3/bin/initdb -E utf8 --locale en_US.UTF-8 -D $PSQL_PATH  1>/dev/null 2>&1
+            sudo -u postgres /usr/lib/postgresql/9.4/bin/initdb -E utf8 --locale en_US.UTF-8 -D $PSQL_PATH  1>/dev/null 2>&1
         else
             logText "Initializing new Postgres DB" $GREEN
-            sudo -u postgres /usr/lib/postgresql/9.3/bin/initdb -E utf8 --locale en_US.UTF-8 -D $PSQL_PATH
+            sudo -u postgres /usr/lib/postgresql/9.4/bin/initdb -E utf8 --locale en_US.UTF-8 -D $PSQL_PATH
         fi
 
         #Configure for usage as local devenv

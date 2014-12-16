@@ -32,12 +32,12 @@ RUN apt-get install -y nginx=1.6.2-4+trusty0
 
 #=====END 1.6.2 Installation=====#
 
-#=====POSTGRES 9.3 Installation=====#
-RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" >> /etc/apt/sources.list
+#=====POSTGRES 9.4 Installation=====#
+RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main 9.4" >> /etc/apt/sources.list
 RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 RUN apt-get -y update
-RUN apt-get install -y postgresql-9.3 postgresql-contrib-9.3
-#=====END 9.3 Installation=====#
+RUN apt-get install -y postgresql-9.4 postgresql-contrib-9.4 postgresql-common
+#=====END 9.4 Installation=====#
 
 #=====PHP 5.6.2 Installation=====#
 

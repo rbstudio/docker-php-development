@@ -5,7 +5,7 @@ PHP Development Environment in a docker container
 
 * [Supervisor v3.0b2-1](http://supervisord.org/)
 * [Nginx v1.6,2](http://nginx.org/en/CHANGES-1.6)
-* [PostgreSQL v9.3](http://www.postgresql.org/docs/devel/static/release-9-3.html)
+* [PostgreSQL v9.4 (rc1)](http://www.postgresql.org/about/news/1555/)
 * [PHP v5.6.2](http://php.net/ChangeLog-5.php#5.6.2)
 * [Phalcon v1.3.4](http://phalconphp.com/en/)
 * [Ruby 2.1.3 in RVM with Bundler](https://www.ruby-lang.org/en/news/2014/09/19/ruby-2-1-3-is-released/)
