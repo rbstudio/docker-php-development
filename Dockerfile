@@ -28,7 +28,7 @@ RUN apt-get install -y -q git subversion
 
 RUN add-apt-repository -y ppa:nginx/stable
 RUN apt-get -y update
-RUN apt-get install -y nginx=1.6.2-4+trusty0
+RUN apt-get install -y nginx
 
 #=====END 1.6.2 Installation=====#
 
