@@ -80,7 +80,7 @@ RUN /bin/bash -l -c "gem install bundler --no-ri --no-rdoc"
 #=====Node v0.10.33 install=====#
 
 RUN curl -sL https://deb.nodesource.com/setup | sudo bash -
-RUN apt-get install -y -q nodejs=0.10.33-2nodesource1~trusty1
+RUN apt-get install -y -q nodejs
 
 #FIXME
 #We won't install any packages, just use napa for now
