@@ -176,7 +176,7 @@ gulpRun () {
     logText "Satisfying gulp dependencies..." $GREEN
     bundleRun install
     logText "Executing \"gulp $1 $2 $3\"" $GREEN
-    cd $APP_PATH && gulp $1
+    cd $APP_PATH && gulp $1 $2 $3
 }
 
 case "$1" in
