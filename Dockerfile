@@ -94,9 +94,6 @@ RUN apt-get install -y supervisor=3.0b2-1
 
 #=====END=====#
 
-#=====Start SSH agent=====#
-RUN eval `ssh-agent -s`
-
 #=====Assets, shell, environment=====#
 
 ADD ./config /home/development/config/default

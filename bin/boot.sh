@@ -85,10 +85,10 @@ runApplication () {
 
     if [ $VERBOSE == 'no' ]; then
         logText "Starting supervisor [output suppressed]" $GREEN
-        eval `ssh-agent -s` && /usr/bin/supervisord -n -c /home/development/config/default/supervisor/supervisord.conf 1>/dev/null 2>&1
+        /usr/bin/supervisord -n -c /home/development/config/default/supervisor/supervisord.conf 1>/dev/null 2>&1
     else
         logText "Starting supervisor [verbose mode]" $GREEN
-        eval `ssh-agent -s` && /usr/bin/supervisord -n -c /home/development/config/default/supervisor/supervisord.conf
+        /usr/bin/supervisord -n -c /home/development/config/default/supervisor/supervisord.conf
     fi
 }
 
