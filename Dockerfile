@@ -77,9 +77,9 @@ RUN /bin/bash -l -c "gem install bundler --no-ri --no-rdoc"
 #=====END=====#
 
 
-#=====Node v0.10.33 install=====#
+#=====Node v5 install=====#
 
-RUN curl -sL https://deb.nodesource.com/setup | sudo bash -
+RUN curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
 RUN apt-get install -y -q nodejs
 
 #FIXME
