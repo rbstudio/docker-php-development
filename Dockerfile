@@ -13,12 +13,9 @@ ENV LANGUAGE en_US.UTF-8
 #Prepare the image
 RUN apt-get -y update
 
-
 #=====General utilities=====#
-
 RUN apt-get install -y -q python-software-properties software-properties-common bash-completion wget nano \
 curl libcurl3 libcurl3-dev build-essential libpcre3-dev expect
-
 
 # Install VCS
 RUN apt-get install -y -q git subversion
