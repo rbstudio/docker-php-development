@@ -41,7 +41,7 @@ RUN apt-get install -y postgresql-9.4 postgresql-contrib-9.4 postgresql-common
 RUN echo "deb http://ppa.launchpad.net/ondrej/php/ubuntu trusty main" >> /etc/apt/sources.list
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key E5267A6C
 RUN apt-get -y update
-RUN apt-get install -y -q php5.6-cli php5.6-fpm php5.6-dev php5.6-mysql php5.6-pgsql php5.6-mongo php5.6-curl php5.6-gd php5.6-intl php-imagick php5.6-mcrypt php5.6-memcache php5.6-xmlrpc php5.6-xsl
+RUN apt-get install -y -q php5-cli php5-fpm php5-dev php5-mysql php5-pgsql php5-mongo php5-curl php5-gd php5-intl php5-imagick php5-mcrypt php5-memcache php5-xmlrpc php5-xsl
 RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
 
