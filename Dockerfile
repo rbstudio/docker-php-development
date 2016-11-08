@@ -76,6 +76,8 @@ RUN /bin/bash -l -c "gem install bundler --no-ri --no-rdoc"
 
 #=====END=====#
 
+#=====PHP REDIS DRIVER=====#
+RUN apt-get install php5-redis
 
 #=====Node v5 install=====#
 
