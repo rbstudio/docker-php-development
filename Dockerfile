@@ -66,11 +66,13 @@ RUN \curl -L https://get.rvm.io | bash -s stable
 RUN /bin/bash -l -c "rvm requirements"
 RUN /bin/bash -l -c "rvm install 2.1.3"
 RUN /bin/bash -l -c "gem install bundler --no-ri --no-rdoc"
+RUN /bin/bash -l -c "gem install compass"
 
 #=====  PHP REDIS DRIVER    =====#
 RUN git clone git://github.com/nicolasff/phpredis.git /usr/local/lib/phpredis
 RUN cd /usr/local/lib/phpredis && phpize && ./configure && make && make install
 RUN echo "extension=redis.so">/etc/php5/fpm/conf.d/20-redis.ini
+RUN echo "extension=redis.so">/etc/php5/cli/conf.d/20-redis.ini
 
 #=====  Node v5 install    =====#
 RUN curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
