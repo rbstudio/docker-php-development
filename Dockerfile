@@ -38,7 +38,7 @@ RUN apt-get install -y nginx
 RUN apt-get install -y postgresql-9.4 postgresql-contrib-9.4 postgresql-common
 
 #=====  PHP 5.6 Installation    =====#
-RUN apt-get install -y -q php5-cli php5-fpm php5-dev php5-mysql php5-pgsql php5-mongo php5-curl php5-gd php5-intl php5-imagick php5-mcrypt php5-memcache php5-xmlrpc php5-xsl
+RUN apt-get install -y -q php5-cli php5-fpm php5-dev php5-mysql php5-pgsql php5-mongo php5-curl php5-gd php5-intl php5-imagick php5-mcrypt php5-memcache php5-xmlrpc php5-xsl php5-curl php-curl php-mbstring
 RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
 
