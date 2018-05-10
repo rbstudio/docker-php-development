@@ -4,7 +4,7 @@ PHP Development Environment in a docker container
 # Contents
 
 * [Supervisor v3.0b2-1](http://supervisord.org/)
-* [Nginx v1.6,2](http://nginx.org/en/CHANGES-1.6)
+* [OpenResty](https://openresty.org)
 * [PostgreSQL v9.4 (rc1)](http://www.postgresql.org/about/news/1555/)
 * [PHP v5.6.2](http://php.net/ChangeLog-5.php#5.6.2)
 * [Phalcon v1.3.4](http://phalconphp.com/en/)

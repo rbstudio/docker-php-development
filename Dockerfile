@@ -25,14 +25,16 @@ RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo 
 RUN echo "deb http://ppa.launchpad.net/ondrej/php/ubuntu trusty main" >> /etc/apt/sources.list
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key E5267A6C
 
-RUN apt-get -y update
+RUN wget -qO - https://openresty.org/package/pubkey.gpg | sudo apt-key add -
+RUN add-apt-repository -y "deb http://openresty.org/package/ubuntu $(lsb_release -sc) main"
 
+RUN apt-get -y update
 
 #=====  Install VCS =====#
 RUN apt-get install -y -q git subversion
 
-#=====  NGINX 1.6.2 Installation    =====#
-RUN apt-get install -y nginx
+#=====  Openresty Installation    =====#
+RUN apt-get install -y openresty
 
 #=====  POSTGRES 9.4 Installation   =====#
 RUN apt-get install -y postgresql-9.4 postgresql-contrib-9.4 postgresql-common
